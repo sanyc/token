@@ -2,7 +2,6 @@
 
 namespace think;
 
-use Config;
 use think\Exception;
 use Firebase\JWT\JWT;
 
@@ -59,7 +58,7 @@ class Token
             }
         }
 
-        $str .= 'key' . Config::get('KEY') ? : self::$key;
+        $str .= 'key' . config('KEY') ? : self::$key;
         return md5($str);
     }
 }
