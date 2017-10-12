@@ -58,7 +58,7 @@ class Token
             }
         }
 
-        $str .= 'key' . config('KEY') ? : self::$key;
+        $str .= 'key' . config('TOKEN_KEY') ? : self::$key;
         return md5($str);
     }
 }

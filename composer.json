@@ -20,5 +20,10 @@
             "src/common.php"
         ]
     },
+    "extra": {
+        "think-config": {
+            "../../config/token": "src/config.php"
+        }
+    },
     "minimum-stability": "dev"
 }
