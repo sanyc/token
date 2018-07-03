@@ -6,11 +6,12 @@ if (!function_exists('jwt_encode_token')) {
 	/**
 	 * [jwt_encode_token description]
 	 * @param  [type] $value [description]
+	 * @param  [type] $key   [description]
 	 * @return [type]        [description]
 	 */
-	function jwt_encode_token($value)
+	function jwt_encode_token($value, $key = NULL)
     {
-        return Token::encodeJwt($value);
+        return Token::encodeJwt($value, $key);
     }
 }
 
@@ -18,11 +19,12 @@ if (!function_exists('jwt_decode_token')) {
 	/**
 	 * [jwt_decode_token description]
 	 * @param  string $token [description]
+	 * @param  [type] $key   [description]
 	 * @return [type]        [description]
 	 */
-	function jwt_decode_token(string $token)
+	function jwt_decode_token(string $token, $key = NULL)
 	{
-		return Token::decodeJwt($token);
+		return Token::decodeJwt($token, $key);
 	}
 }
 
