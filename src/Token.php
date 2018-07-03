@@ -9,15 +9,15 @@ class Token
 {
     public static $key = '5500a628e5533f0f656bed44f71d2837';
 
-    public static function encodeJwt($data)
+    public static function encodeJwt($data, $key = NULL)
     {
-        return JWT::encode($data, self::$key);
+        return JWT::encode($data, $key ? : self::$key);
     }
 
-    public static function decodeJwt($token)
+    public static function decodeJwt($token, $key = NULL)
     {
         try {
-            return JWT::decode($token, self::$key, array('HS256'));
+            return JWT::decode($token, $key ? : self::$key, array('HS256'));
         } catch (\Exception $e) {
             throw new Exception("Check failed", -1003);            
         }
