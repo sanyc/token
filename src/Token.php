@@ -7,10 +7,14 @@ use Firebase\JWT\JWT;
 
 class Token
 {
-    public static $key = '5500a628e5533f0f656bed44f71d2837';
+    public static $key    = '5500a628e5533f0f656bed44f71d2837';
+    public static $leeway = 3600;
 
-    public static function encodeJwt($data, $key = NULL)
-    {
+    public static function encodeJwt($data, $key = NULL, $leeway = NULL)
+    { 
+        $data = array_merge($data, [
+            "exp" => time() + ($leeway ? : self::$leeway)
+        ]);
         return JWT::encode($data, $key ? : self::$key);
     }
 
@@ -19,7 +23,7 @@ class Token
         try {
             return JWT::decode($token, $key ? : self::$key, array('HS256'));
         } catch (\Exception $e) {
-            throw new Exception("Check failed", -1003);            
+            throw new Exception($e->getMessage(), -1003);            
         }
     }
     

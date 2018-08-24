@@ -5,13 +5,14 @@ use think\Token;
 if (!function_exists('jwt_encode_token')) {
 	/**
 	 * [jwt_encode_token description]
-	 * @param  [type] $value [description]
-	 * @param  [type] $key   [description]
-	 * @return [type]        [description]
+	 * @param  [type] $value  [description]
+	 * @param  [type] $key    [description]
+	 * @param  [type] $leeway [description]
+	 * @return [type]         [description]
 	 */
-	function jwt_encode_token($value, $key = NULL)
+	function jwt_encode_token($value, $key = NULL, $leeway = NULL)
     {
-        return Token::encodeJwt($value, $key);
+        return Token::encodeJwt($value, $key, $leeway);
     }
 }
 
