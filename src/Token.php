@@ -7,21 +7,22 @@ use Firebase\JWT\JWT;
 
 class Token
 {
-    public static $key    = '5500a628e5533f0f656bed44f71d2837';
-    public static $leeway = 3600;
 
     public static function encodeJwt($data, $key = NULL, $leeway = NULL)
     { 
+        $options = config('queue.');
+
         $data = array_merge($data, [
-            "exp" => time() + ($leeway ? : self::$leeway)
+            "exp" => time() + ($leeway ? : $options['leeway'])
         ]);
-        return JWT::encode($data, $key ? : self::$key);
+        return JWT::encode($data, $key ? : $options['key']);
     }
 
     public static function decodeJwt($token, $key = NULL)
     {
+        $options = config('queue.');
         try {
-            return JWT::decode($token, $key ? : self::$key, array('HS256'));
+            return JWT::decode($token, $key ? : $options['key'], array('HS256'));
         } catch (\Exception $e) {
             throw new Exception($e->getMessage(), -1003);            
         }
@@ -51,6 +52,8 @@ class Token
      */
     protected static function mixSign($data)
     {
+        $options = config('queue.');
+
         $data = array_diff_key($data, array_flip(['_url', 'sign', 's', '_token', 'action']));
         ksort($data);
 
@@ -62,7 +65,7 @@ class Token
             }
         }
 
-        $str .= 'key' . config('TOKEN_KEY') ? : self::$key;
+        $str .= 'key' . $options['key'];
         return md5($str);
     }
 }
