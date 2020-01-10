@@ -23,7 +23,7 @@
     "extra": {
         "think": {
             "config": {
-                "tokens": "src/config.php"
+                "token": "src/config.php"
             }
         }
     },
