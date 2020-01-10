@@ -10,7 +10,7 @@ class Token
 
     public static function encodeJwt($data, $key = NULL, $leeway = NULL)
     { 
-        $options = \think\facade\Config::get('token');
+        $options = config('token');
 
         $data = array_merge($data, [
             "exp" => time() + ($leeway ? : $options['leeway'])
@@ -20,7 +20,7 @@ class Token
 
     public static function decodeJwt($token, $key = NULL)
     {
-        $options = \think\facade\Config::get('token');
+        $options = config('token');
         try {
             return JWT::decode($token, $key ? : $options['key'], array('HS256'));
         } catch (\Exception $e) {
@@ -52,7 +52,7 @@ class Token
      */
     protected static function mixSign($data)
     {
-        $options = \think\facade\Config::get('token');
+        $options = config('token');
 
         $data = array_diff_key($data, array_flip(['_url', 'sign', 's', '_token', 'action']));
         ksort($data);
