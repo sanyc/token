@@ -1,6 +1,6 @@
 <?php
 
-namespace think;
+namespace think\Token;
 
 use think\Exception;
 use Firebase\JWT\JWT;
