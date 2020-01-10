@@ -23,7 +23,7 @@
     "extra": {
         "think": {
             "config": {
-                "jwt_token": "src/config.php"
+                "token": "src/config.php"
             }
         }
     },

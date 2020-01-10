@@ -4,14 +4,13 @@ namespace think;
 
 use think\Exception;
 use Firebase\JWT\JWT;
-use think\facade\Config;
 
 class Token
 {
 
     public static function encodeJwt($data, $key = NULL, $leeway = NULL)
     { 
-        $options = Config::get('jwt_token');
+        $options = \think\facade\Config::get('token');
 
         $data = array_merge($data, [
             "exp" => time() + ($leeway ? : $options['leeway'])
@@ -21,7 +20,7 @@ class Token
 
     public static function decodeJwt($token, $key = NULL)
     {
-        $options = Config::get('jwt_token');
+        $options = \think\facade\Config::get('token');
         try {
             return JWT::decode($token, $key ? : $options['key'], array('HS256'));
         } catch (\Exception $e) {
@@ -53,7 +52,7 @@ class Token
      */
     protected static function mixSign($data)
     {
-        $options = Config::get('jwt_token');
+        $options = \think\facade\Config::get('token');
 
         $data = array_diff_key($data, array_flip(['_url', 'sign', 's', '_token', 'action']));
         ksort($data);
