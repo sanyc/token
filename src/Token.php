@@ -7,7 +7,6 @@ use Firebase\JWT\JWT;
 
 class Token
 {
-
     public static function encodeJwt($data, $key = NULL, $leeway = NULL)
     { 
         $options = config('token');
