@@ -1,7 +1,6 @@
 {
     "name": "sanyc/token",
     "description": "The ThinkPHP6 Token Sign Package",
-    "type": "think-extend",
     "require": {
         "firebase/php-jwt": "^5.0"
     },
