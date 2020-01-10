@@ -1,9 +1,9 @@
 {
     "name": "sanyc/token",
-    "description": "The ThinkPHP5 Token Sign Package",
+    "description": "The ThinkPHP6 Token Sign Package",
     "type": "think-extend",
     "require": {
-        "firebase/php-jwt": "5.0"
+        "firebase/php-jwt": "^5.0"
     },
     "license": "Apache-2.0",
     "authors": [
@@ -21,8 +21,10 @@
         ]
     },
     "extra": {
-        "think-config": {
-            "token": "src/config.php"
+        "think": {
+            "config": {
+                "dada": "src/config.php"
+            }
         }
     },
     "minimum-stability": "dev"
