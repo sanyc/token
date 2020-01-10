@@ -21,7 +21,11 @@
         ]
     },
     "extra": {
-
+        "think": {
+            "config": {
+                "tokens": "src/config.php"
+            }
+        }
     },
     "minimum-stability": "dev"
 }
