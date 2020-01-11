@@ -1,6 +1,6 @@
 <?php
 
-use think\Token;
+use think\Token\Token;
 
 if (!function_exists('jwt_encode_token')) {
 	/**

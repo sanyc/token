@@ -14,7 +14,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "think\\token\\": "src"
+            "think\\Token\\": "src"
         },
         "files": [
             "src/common.php"
