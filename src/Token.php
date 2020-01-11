@@ -53,7 +53,7 @@ class Token
     {
         $options = config('token');
 
-        $data = array_diff_key($data, array_flip(['_url', 'sign', 's', '_token', 'action']));
+        //$data = array_diff_key($data, array_flip(['_url', 'sign', 's', '_token', 'action']));
         ksort($data);
 
         $str = '';
